@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace AcklenAveJobApp.Models
+﻿namespace AcklenAveJobApp.Models
 {
     public class EncodedStringPostModel
     {
@@ -11,8 +6,8 @@ namespace AcklenAveJobApp.Models
         {
             EncodedValue = encodedValue;
             EmailAddress = "joseph.a.griff@gmail.com";
-            WebhookUrl = "http://arcommsbeacon.apphb.com/api/values/";
-            RepoUrl = "https://github.com/Slyther/AcklenJobApp";
+            WebhookUrl = "http://arcommsbeaconvs2012.apphb.com/api/values";
+            RepoUrl = "https://github.com/Slyther/AcklenJobAppVS2012";
         }
 
         public string EncodedValue { get; set; }
