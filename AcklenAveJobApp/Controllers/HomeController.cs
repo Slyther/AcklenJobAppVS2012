@@ -60,13 +60,16 @@ namespace AcklenAveJobApp.Controllers
                 newStream.Write(bytes, 0, bytes.Length);
                 newStream.Close();
 
-                var response = http.GetResponse();
-                var stream = response.GetResponseStream();
-                var sr = new StreamReader(stream);
-                var content = sr.ReadToEnd();
-                var postResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<PostResponseModel>(content);
-                if (postResponse != null && postResponse.Status.ToLower().Equals("crashandburn"))
-                    i--;
+                try
+                {
+                    var response = http.GetResponse();
+                    var stream = response.GetResponseStream();
+                    var sr = new StreamReader(stream);
+                    var content = sr.ReadToEnd();
+                    var postResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<PostResponseModel>(content);
+                    if (postResponse != null && postResponse.Status.ToLower().Equals("crashandburn"))
+                        i--;
+                }catch{}
             }
             return RedirectToAction("Messages");
         }
