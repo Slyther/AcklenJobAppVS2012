@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AcklenAveJobApp.Entities.SecretPayload>
+
+@{
+    ViewBag.Title = "Messages";
+}
+
+<h1>Messages</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceivedDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Secret)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceivedDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Secret)
+            </td>
+        </tr>
+    }
+
+</table>
