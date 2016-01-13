@@ -6,7 +6,7 @@
         {
             EncodedValue = encodedValue;
             EmailAddress = "joseph.a.griff@gmail.com";
-            WebhookUrl = "http://arcommsbeaconvs2012.apphb.com/api/values";
+            WebhookUrl = "http://arcommsbeaconvs2012.apphb.com/";
             RepoUrl = "https://github.com/Slyther/AcklenJobAppVS2012";
             Name = "Jose Guillermo Avila Griffin";
         }

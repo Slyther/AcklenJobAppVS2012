@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -46,7 +47,6 @@ namespace AcklenAveJobApp.Controllers
                     AlgorithmsHandler handler = new AlgorithmsHandler();
                     encodedResponse = handler.Encode(obtainedResponseModel);
                 }
-
                 var guidConcat2 = "values/" + guid + "/" + obtainedResponseModel.Algorithm.ToString("G");
                 var http = (HttpWebRequest)WebRequest.Create(new Uri("http://internal-devchallenge-2-dev.apphb.com/" + guidConcat2));
                 http.Accept = "application/json";
@@ -55,21 +55,9 @@ namespace AcklenAveJobApp.Controllers
                 var postModel = new EncodedStringPostModel(encodedResponse);
                 var stringifiedPostModel = Newtonsoft.Json.JsonConvert.SerializeObject(postModel);
                 byte[] bytes = Encoding.ASCII.GetBytes(stringifiedPostModel);
-
                 Stream newStream = http.GetRequestStream();
                 newStream.Write(bytes, 0, bytes.Length);
                 newStream.Close();
-
-                try
-                {
-                    var response = http.GetResponse();
-                    var stream = response.GetResponseStream();
-                    var sr = new StreamReader(stream);
-                    var content = sr.ReadToEnd();
-                    var postResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<PostResponseModel>(content);
-                    if (postResponse != null && postResponse.Status.ToLower().Equals("crashandburn"))
-                        i--;
-                }catch{}
             }
             return RedirectToAction("Messages");
         }
