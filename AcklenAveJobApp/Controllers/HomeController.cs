@@ -28,6 +28,8 @@ namespace AcklenAveJobApp.Controllers
             var payload = Mapper.Map<SecretPayload>(Payload);
             _secretPayloadRepository.Create(payload);
         }
+
+        [System.Web.Mvc.HttpGet]
         public ActionResult Index()
         {
             ViewBag.Title = "AR Communications Beacon";
