@@ -23,7 +23,7 @@ namespace AcklenAveJobApp.Controllers
         }
 
         [System.Web.Http.HttpPost]
-        public void Post([FromBody]SecretPayloadRegisterModel Payload)
+        public void Index([FromBody]SecretPayloadRegisterModel Payload)
         {
             var payload = Mapper.Map<SecretPayload>(Payload);
             _secretPayloadRepository.Create(payload);

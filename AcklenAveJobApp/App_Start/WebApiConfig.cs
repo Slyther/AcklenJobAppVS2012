@@ -14,17 +14,17 @@ namespace AcklenAveJobApp
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
-
             config.Routes.MapHttpRoute(
-                name: "ActionOnlyRoute",
-                routeTemplate: "{action}",
-                defaults: new {controller = "Values"}
-                );
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            //config.Routes.MapHttpRoute(
+            //    name: "ActionOnlyRoute",
+            //    routeTemplate: "",
+            //    defaults: new { controller = "Values" }
+            //    );
         }
     }
 }
