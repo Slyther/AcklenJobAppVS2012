@@ -42,6 +42,7 @@ namespace AcklenAveJobApp.Controllers
 
         public ActionResult RequestSecret()
         {
+            var list = new List<PostResponseModel>();
             for (int i = 0; i < 20; i++)
             {
                 string encodedResponse;
@@ -67,6 +68,12 @@ namespace AcklenAveJobApp.Controllers
                 Stream newStream = http.GetRequestStream();
                 newStream.Write(bytes, 0, bytes.Length);
                 newStream.Close();
+                var response = http.GetResponse();
+                var stream = response.GetResponseStream();
+                var sr = new StreamReader(stream);
+                var content = sr.ReadToEnd();
+                var postResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<PostResponseModel>(content);
+                list.Add(postResponse);
             }
             return RedirectToAction("Messages");
         }

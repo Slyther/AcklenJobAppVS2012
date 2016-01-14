@@ -15,12 +15,12 @@ namespace AcklenAveJobApp.Controllers
             _secretPayloadRepository = secretPayloadRepository;
         }
 
-        //[HttpPost]
-        //// POST api/values
-        //public void Post([FromBody]SecretPayloadRegisterModel Payload)
-        //{
-        //    var payload = Mapper.Map<SecretPayload>(Payload);
-        //    _secretPayloadRepository.Create(payload);
-        //}
+        [HttpPost]
+        // POST api/values
+        public void Post([FromBody]SecretPayloadRegisterModel Payload)
+        {
+            var payload = Mapper.Map<SecretPayload>(Payload);
+            _secretPayloadRepository.Create(payload);
+        }
     }
 }
