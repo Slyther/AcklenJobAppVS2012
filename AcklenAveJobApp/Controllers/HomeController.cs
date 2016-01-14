@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Web.Http;
 using System.Web.Mvc;
 using AcklenAveJobApp.Algorithms;
+using AcklenAveJobApp.Entities;
 using AcklenAveJobApp.Interfaces;
 using AcklenAveJobApp.Models;
+using AutoMapper;
 
 namespace AcklenAveJobApp.Controllers
 {
@@ -19,6 +22,12 @@ namespace AcklenAveJobApp.Controllers
             _secretPayloadRepository = secretPayloadRepository;
         }
 
+        [System.Web.Http.HttpPost]
+        public void Post([FromBody]SecretPayloadRegisterModel Payload)
+        {
+            var payload = Mapper.Map<SecretPayload>(Payload);
+            _secretPayloadRepository.Create(payload);
+        }
         public ActionResult Index()
         {
             ViewBag.Title = "AR Communications Beacon";
